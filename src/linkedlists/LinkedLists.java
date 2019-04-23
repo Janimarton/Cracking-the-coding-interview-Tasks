@@ -12,4 +12,10 @@ public class LinkedLists {
 
     }
 
+    public static LinkedList returnKthToLast(LinkedList givenLinkedList, int givenIndex) {
+        LinkedList resultLinkedList = new LinkedList();
+
+        for (int i = givenIndex; i < givenLinkedList.size(); i++) resultLinkedList.add(givenLinkedList.get(i));
+        return resultLinkedList;
+    }
 }
