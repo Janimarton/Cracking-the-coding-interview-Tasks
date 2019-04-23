@@ -18,4 +18,16 @@ public class LinkedLists {
         for (int i = givenIndex; i < givenLinkedList.size(); i++) resultLinkedList.add(givenLinkedList.get(i));
         return resultLinkedList;
     }
+
+    public static void deleteMiddleNode(LinkedList givenLinkedList) {
+        if (givenLinkedList.size() % 2 == 1) {
+            int middleElementIndex = ((givenLinkedList.size() - 1) / 2);
+            givenLinkedList.remove(middleElementIndex);
+        } else {
+            int leftMiddleElementIndex = (givenLinkedList.size() / 2) - 1;
+            int rightMiddleElementIndex = givenLinkedList.size() / 2;
+            givenLinkedList.remove(rightMiddleElementIndex);
+            givenLinkedList.remove(leftMiddleElementIndex);
+        }
+    }
 }
