@@ -60,5 +60,17 @@ class StackAndQueuesTest {
         assertThrows(EmptyStackException.class, () -> fixedMultiStack.peek(0));
     }
 
+    @Test
+    public void fixedMultipleStackGetMinimumSample() {
+        fixedMultiStack.push(1, -2);
+        int stackMinimum = fixedMultiStack.getMinimum(1);
+        assertEquals(-2, stackMinimum);
+    }
+
+    @Test
+    public void fixedMultipleStackGetMinimumEmptyStack() {
+        assertThrows(EmptyStackException.class, () -> fixedMultiStack.getMinimum(0));
+    }
+
 
 }

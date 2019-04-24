@@ -9,6 +9,7 @@ public class StackAndQueues {
         private int stackCapacity;
         private int[] values;
         private int[] sizes;
+        private int[] stackMinimum;
 
         public int[] getValues() {
             return values;
@@ -18,6 +19,7 @@ public class StackAndQueues {
             stackCapacity = stackSize;
             values = new int[stackSize * numberOfStacks];
             sizes = new int[numberOfStacks];
+            stackMinimum = new int[numberOfStacks];
         }
 
         public void push(int stackNum, int value) {
@@ -26,6 +28,7 @@ public class StackAndQueues {
             }
             sizes[stackNum]++;
             values[indexOfTop(stackNum)] = value;
+            stackMinimum[stackNum] = findMinimum(stackNum);
         }
 
         public int pop(int stackNum) {
@@ -36,6 +39,7 @@ public class StackAndQueues {
             int value = values[topIndex];
             values[topIndex] = 0;
             sizes[stackNum]--;
+            stackMinimum[stackNum] = findMinimum(stackNum);
             return value;
         }
 
@@ -44,6 +48,23 @@ public class StackAndQueues {
                 throw new EmptyStackException();
             }
             return values[indexOfTop(stackNum)];
+        }
+
+        public int getMinimum(int stackNum) {
+            if (isEmpty(stackNum)) {
+                throw new EmptyStackException();
+            }
+            return stackMinimum[stackNum];
+
+        }
+
+        private int findMinimum(int stackNum) {
+            for (int i = 0; i < values.length; i++) {
+                if (values[i] > values[i + 1]) {
+                    stackMinimum[stackNum] = values[i + 1];
+                }
+            }
+            return 0;
         }
 
         private int indexOfTop(int stackNum) {
